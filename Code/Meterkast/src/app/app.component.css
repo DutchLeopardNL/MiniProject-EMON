@@ -1,0 +1,11 @@
+.span{
+    background-color: aqua;
+}
+
+div {
+    text-align: center;
+}
+
+mat-toolbar{
+    width: 100% !important;
+}
