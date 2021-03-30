@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace EMONAPI.Persistance.Entities
+{
+    public class highestObject
+    {
+        public Datagram datagram { get; set; }
+        public highestObject()
+        {
+
+        }
+    }
+}

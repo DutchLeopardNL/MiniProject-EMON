@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { NgxGaugeModule } from 'ngx-gauge';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { NgxGaugeModule } from 'ngx-gauge';
     AdditionalInfoComponent
   ],
   imports: [
+    ToastrModule.forRoot(),
     NgxGaugeModule,
     MatToolbarModule,
     BrowserModule,

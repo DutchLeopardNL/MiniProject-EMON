@@ -17,7 +17,7 @@ export class GraphComponent implements OnInit {
  chartOption : EChartsOption;
   ngOnInit(): void {
   this.getDatagrams();
-  setInterval(() => { this.getDatagrams(); }, 10000);
+  setInterval(() => { this.getDatagrams(); }, 20000);
   }
 
 

@@ -4,13 +4,25 @@
            [value]="gaugeValue" 
            [label]="gaugeLabel"  
            [append]="gaugeAppendText"
+           [thresholds]="thresholdConfig"
+           [size]="canvasSize"
            [max] = 5>
+</ngx-gauge>
+
+<ngx-gauge [type]="gaugeType4" 
+           [value]="gaugeValue4" 
+           [label]="gaugeLabel4"  
+           [append]="gaugeAppendText4"
+           [size]="canvasSize"
+           [max] = 5>
+
 </ngx-gauge>
 
 <ngx-gauge [type]="gaugeType1" 
            [value]="gaugeValue1" 
            [label]="gaugeLabel1"  
            [append]="gaugeAppendText1"
+           [size]="canvasSize"
            [max] = 5000>
 </ngx-gauge>
 
@@ -18,6 +30,7 @@
            [value]="gaugeValue2" 
            [label]="gaugeLabel2"  
            [append]="gaugeAppendText2"
+           [size]="canvasSize"
            [max] = 10000>
 </ngx-gauge>
 
@@ -25,5 +38,6 @@
            [value]="gaugeValue3" 
            [label]="gaugeLabel3"  
            [append]="gaugeAppendText3"
+           [size]="canvasSize"
            [max] = 0.03>
 </ngx-gauge>
