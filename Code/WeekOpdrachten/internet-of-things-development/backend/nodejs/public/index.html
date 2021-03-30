@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <style>
+        .monkeyLog {
+            background-image: url("https://avatars.githubusercontent.com/u/2399511?s=400&u=d89b55a59f64d23fcded3b7ee7565af722e5257c&v=4");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: azure;
+            
+        }
+    </style>
+    <title>IWSN - Wemos</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        socket.on("log", receivedLog)
+
+        function receivedLog(log) {
+            console.log(log);
+            logDiv = document.getElementById("log");
+            logDiv.innerHTML = "<p>" + log + "<\p>" + logDiv.innerHTML;
+        }
+
+        function submitEvent(event) {
+            socket.emit('event', event);
+        }
+    </script>
+<link rel="stylesheet" type="text/css"  href="mystyle.css">
+</head>
+<!-- <div style="background-image: url('https://avatars.githubusercontent.com/u/2399511?s=400&u=d89b55a59f64d23fcded3b7ee7565af722e5257c&v=4');">  -->
+
+    <body>
+        <div>
+        <h1>IWSN - Wemos</h1>
+        EVENTS:
+        <button name="outoforder" onclick="submitEvent('EVENT_OUT_OF_ORDER')">MONKEY OUT OF ORDER</button>
+        <button name="start" onclick="submitEvent('EVENT_START')"> MONKEY START</button>
+        <button name="button_1" onclick="submitEvent('EVENT_BUTTON_1')"> MONKEY BUTTON 1</button>
+        <button name="button_2" onclick="submitEvent('EVENT_BUTTON_2')"> MONKEY BUTTON 2</button>
+        <button name="buttonclear" onclick='(function(){logDiv.innerHTML = "";}())'>CLEAR MONKEY LOG</button>
+
+        <h2>Messages from Monkey:</h2>
+        <div class="monkeyLog" id="log"></div>
+    </div>
+    </body>
+
+</html>
+
+<!--node ./nodejs/app.js -->
