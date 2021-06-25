@@ -1,4 +1,4 @@
-﻿using EMONAPI.Domain.Datagram;
+using EMONAPI.Domain.Datagram;
 using EMONAPI.Persistance.Entities;
 using MediatR;
 using System;

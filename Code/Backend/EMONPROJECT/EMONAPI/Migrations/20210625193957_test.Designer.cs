@@ -3,14 +3,16 @@ using EMONAPI.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EMONAPI.Migrations
 {
     [DbContext(typeof(MeterContext))]
-    partial class MeterContextModelSnapshot : ModelSnapshot
+    [Migration("20210625193957_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,8 +65,8 @@ namespace EMONAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("value")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("value")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

@@ -31,5 +31,6 @@ namespace EMONAPI.Persistance.Context
         }
 
         public DbSet<FullDatagram> datagrams { get; set; }
+        public DbSet<TempratureModel> tempratures { get; set; }
     }
 }

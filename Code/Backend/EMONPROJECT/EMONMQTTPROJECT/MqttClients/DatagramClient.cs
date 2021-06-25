@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 namespace MQTTReceiver
 {
 
-    class LocalMqttClient
+    class DatagramClient
     {
         private MeterContext context = new MeterContext();
         private DatagramRepository repository = new DatagramRepository();
@@ -73,7 +73,7 @@ namespace MQTTReceiver
             FullDatagram datagram = new FullDatagram();
             datagram.signature = testObject.datagram.signature;
             datagram.Id = Guid.NewGuid().ToString();
-            datagram.timeStamp = DateTime.Now.ToString("dd_MMM_yyyy_HH_mm_ss");
+            datagram.timeStamp = DateTime.Now.ToString("MMM_dd_yyyy_HH_mm_ss");
             foreach (var substring in testObject.datagram.p1.Split(new string[] { Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries))
             {
                 if(substring.Contains("1-0:1.8.1"))

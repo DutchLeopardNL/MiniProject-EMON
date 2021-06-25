@@ -1,4 +1,4 @@
-﻿using EMONAPI.Domain.Datagram;
+using EMONAPI.Domain.Datagram;
 using MediatR;
 using System;
 using System.Linq;

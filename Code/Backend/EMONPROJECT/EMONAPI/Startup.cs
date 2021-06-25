@@ -16,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using EMONAPI.Domain.Datagram;
 using EMONAPI.Persistance.Repositories.Datagram;
+using EMONAPI.Persistance.Repositories;
+using EMONAPI.Domain.Temprature;
 
 namespace EMONAPI
 {
@@ -47,6 +49,7 @@ namespace EMONAPI
             services.AddControllers();
             services.AddMediatR(typeof(Startup));
             services.AddScoped<IDatagramRepository, DatagramRepository>();
+            services.AddScoped<ITempratureRepository, TempratureRepository>();
             services.AddDbContext<MeterContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSwaggerGen();

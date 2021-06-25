@@ -1,4 +1,4 @@
-﻿using EMONAPI.Application.Datagrams.Command.AddDatagram;
+using EMONAPI.Application.Datagrams.Command.AddDatagram;
 using EMONAPI.Application.Datagrams.Query.GetLastDatagram;
 using EMONAPI.Application.Datagrams.Query.NewFolder;
 using MediatR;
