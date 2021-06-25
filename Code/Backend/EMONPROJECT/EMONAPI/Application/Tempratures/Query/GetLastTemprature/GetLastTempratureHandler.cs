@@ -1,5 +1,4 @@
-﻿using EMONAPI.Domain.Datagram;
-using EMONAPI.Domain.Temprature;
+﻿using EMONAPI.Domain.Temprature;
 using EMONAPI.Persistance.Entities;
 using MediatR;
 using System;

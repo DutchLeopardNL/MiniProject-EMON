@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EMONAPI.Application.Datagrams.Query.NewFolder
+namespace EMONAPI.Application.Datagrams.Query.GetxDatagrams
 {
     public class GetxDatagramsHandler: IRequestHandler<GetxDatagramsRequest,GetxDatagramsResponse>
     {

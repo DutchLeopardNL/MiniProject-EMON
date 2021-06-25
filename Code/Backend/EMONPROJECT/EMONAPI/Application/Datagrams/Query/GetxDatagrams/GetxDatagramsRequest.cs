@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EMONAPI.Application.Datagrams.Query.NewFolder
+namespace EMONAPI.Application.Datagrams.Query.GetxDatagrams
 {
     public class GetxDatagramsRequest : IRequest<GetxDatagramsResponse>
     {

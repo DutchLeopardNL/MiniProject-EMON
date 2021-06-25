@@ -1,6 +1,6 @@
 using EMONAPI.Application.Datagrams.Command.AddDatagram;
 using EMONAPI.Application.Datagrams.Query.GetLastDatagram;
-using EMONAPI.Application.Datagrams.Query.NewFolder;
+using EMONAPI.Application.Datagrams.Query.GetxDatagrams;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;
