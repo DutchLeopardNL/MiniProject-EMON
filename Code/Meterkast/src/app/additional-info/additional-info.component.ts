@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApicommsService } from '../apicomms.service';
 import { Datagram } from '../entities/Datagram';
+import { Temprature } from '../entities/Temprature';
 
 @Component({
   selector: 'app-additional-info',
@@ -15,6 +16,7 @@ export class AdditionalInfoComponent implements OnInit {
 };
   constructor(private api: ApicommsService) { }
   datagram: Datagram;
+  temprature: Temprature;
   gaugeType = "arch";
   gaugeValue = 0;
   gaugeLabel = "Power Usage";
@@ -39,9 +41,19 @@ export class AdditionalInfoComponent implements OnInit {
   gaugeValue4 = 0;
   gaugeLabel4 = "Price per hour";
   gaugeAppendText4 = "Euro";
+
+  gaugeType5 = "arch";
+  gaugeValue5 = 0;
+  gaugeLabel5 = "Degrees in Celcius";
+  gaugeAppendText5 = "C";
+
   ngOnInit(): void {
      this.getDatagrams();
-     setInterval(() => { this.getDatagrams(); }, 20000);
+     this.getTempratures();
+     setInterval(() => { 
+       this.getDatagrams();
+       this.getTempratures();
+       }, 20000);
   }
 
   getDatagrams() {
@@ -56,4 +68,13 @@ export class AdditionalInfoComponent implements OnInit {
       this.gaugeValue4 = +price;
     });
   }
+
+  getTempratures() {
+    console.log("received temprature data");
+    this.api.getSingleTemprature().subscribe(temprature => {
+      this.temprature = temprature;
+      this.gaugeValue5 = Number(temprature.value);
+    })
+  }
+
 }

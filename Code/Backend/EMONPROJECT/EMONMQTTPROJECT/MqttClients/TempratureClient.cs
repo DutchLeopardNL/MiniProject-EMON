@@ -67,12 +67,10 @@ namespace EMONMQTTPROJECT.MqttClients
             TempratureModel tempratureModel = new TempratureModel();
             tempratureModel.Id = Guid.NewGuid().ToString();
             tempratureModel.timeStamp = DateTime.Now.ToString("MMM_dd_yyyy_HH_mm_ss");
-
-            tempratureModel.value = payload;
-
-            context.tempratures.Add(tempratureModel);
-            context.SaveChanges();
-            Console.WriteLine("Temprature added");
+                tempratureModel.value = payload;
+                context.tempratures.Add(tempratureModel);
+                context.SaveChanges();
+                Console.WriteLine("Temprature added"); 
         }
         public void saveTemprature(TempratureModel temprature)
         {
