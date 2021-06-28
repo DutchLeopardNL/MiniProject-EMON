@@ -1,12 +1,9 @@
-// INCLUDES //
 
 
 #include "PubSubClient.h"
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
-// ATTRIBUTES //
 
-// MQTT attributes
 const char* device_name = "TEMPSENSOR";
 const char* ssid = "devolo-bcf2afde08e2";
 const char* password = "TPUHHEFJCIJWLAXS";
@@ -15,14 +12,12 @@ const char* password = "TPUHHEFJCIJWLAXS";
 WiFiClient wifiClient;
 PubSubClient mqttClient;
 
-// 
+
 const int DELAY_TIME = 10000;
 
 char data[6] = ""; // received string of XBee-nodes, ex.: 12.34
 
-// METHODS //
-
-void setup_wifi() {
+void init_wifi() {
   Serial.print((String)device_name + " Attempting to connect to ");
   Serial.println(ssid);
   
@@ -40,7 +35,7 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 
-void setup_mqtt() 
+void init_mqtt() 
 {
   mqttClient.setClient(wifiClient);
   mqttClient.setServer("test.mosquitto.org",1883);
@@ -64,36 +59,32 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  setup_wifi();
-  setup_mqtt();
+  init_wifi();
+  init_mqtt();
 }
 
 void loop() {
-  if (Serial.available()){               
-    Serial.println("Serial AVAILABLE");                          
-   // length of '6' is required for the 5 characters (12345 => "24.14") + the escape character ('\0')    
-   // which gets added at a later moment
-
-
+  if (Serial.available()){                                  
     String str = Serial.readStringUntil('\n');
     Serial.println(str);
+    
     while(Serial.available())
     {
       //Clears the buffer
       Serial.read();                
     }
-    if(str.length() > 4){ // if valid input
+
+    //Check if temprature length is higher than 4 22.22 = 5
+    if(str.length() > 4)
+    {
       str.toCharArray(data,6);
       mqttClient.publish("EMON_CHANNEL_2", data);
-   }
+    }
   }
-  else
-  {
-    Serial.println("Serial NOT AVAILABLE");
-  }
+  //Check MQTT connection
   if (!mqttClient.connected()) {
     Serial.println((String)device_name + " MQTT disconnected");
-    setup_mqtt();
+    init_mqtt();
     delay(5000);
   }
 
