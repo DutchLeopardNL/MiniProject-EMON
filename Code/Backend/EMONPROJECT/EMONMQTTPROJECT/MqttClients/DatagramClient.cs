@@ -107,6 +107,15 @@ namespace MQTTReceiver
                     datagram.gasUsage = value;
                 }
             }
+            if(datagram.currentUsage > 10)
+            {
+                datagram.currentUsage =  datagram.currentUsage / 1000;
+                datagram.totalHigh = datagram.totalHigh / 1000;
+                datagram.totalLow = datagram.totalLow / 1000;
+                datagram.returnHigh = datagram.returnHigh / 1000;
+                datagram.returnLow = datagram.returnLow / 1000;
+                datagram.gasUsage = datagram.gasUsage / 1000;
+            }
             context.datagrams.Add(datagram);
             context.SaveChanges();
             Console.WriteLine("datagram added");

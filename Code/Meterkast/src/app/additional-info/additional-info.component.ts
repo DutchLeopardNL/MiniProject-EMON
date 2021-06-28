@@ -14,14 +14,24 @@ export class AdditionalInfoComponent implements OnInit {
     '2.5': {color: 'orange'},
     '4': {color: 'red'}
 };
+
+  tempratureConfig = {
+    '0': {color : 'blue'},
+    '15': {color: 'green'},
+    '20': {color: 'orange'},
+    '30': {color: 'red'}
+  };
   constructor(private api: ApicommsService) { }
   datagram: Datagram;
   temprature: Temprature;
+ 
+  canvasSize = "250";
+
   gaugeType = "arch";
   gaugeValue = 0;
   gaugeLabel = "Power Usage";
   gaugeAppendText = "kWh";
-  canvasSize = "250";
+
   gaugeType1 = "arch";
   gaugeValue1 = 0;
   gaugeLabel1 = " Total Gas Used";
