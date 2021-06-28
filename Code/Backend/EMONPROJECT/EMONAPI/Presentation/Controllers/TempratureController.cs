@@ -1,4 +1,5 @@
 ﻿using EMONAPI.Application.Tempratures.Command.AddTemprature;
+using EMONAPI.Application.Tempratures.Query.GetAverageTempByDate;
 using EMONAPI.Application.Tempratures.Query.GetLastTemprature;
 using EMONAPI.Application.Tempratures.Query.GetxTempratures;
 using MediatR;
@@ -32,8 +33,17 @@ namespace EMONAPI.Presentation.Controllers
                 var result = await _mediator.Send(query);
                 return result;
             }
-            [HttpPost("PostTemprature")]
+
+            [HttpGet("averageTemprature/{date}")]
+            public async Task<GetAverageTempByDateResponse> GetAverageTempByDate(CancellationToken cancellation, string date)
+            {
+                var query = new GetAverageTempByDateRequest(date);
+                var result = await _mediator.Send(query);
+                return result;
+            }
+        [HttpPost("PostTemprature")]
             public async Task<AddTempratureResponse> AddDatagram([FromBody] AddTempratureCommand command, CancellationToken cancellationToken) => await _mediator.Send(command, cancellationToken).ConfigureAwait(false);
+
         
     }
 }

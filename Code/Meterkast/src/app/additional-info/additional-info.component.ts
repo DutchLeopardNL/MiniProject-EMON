@@ -8,7 +8,10 @@ import { Temprature } from '../entities/Temprature';
   templateUrl: './additional-info.component.html',
   styleUrls: ['./additional-info.component.css']
 })
+
 export class AdditionalInfoComponent implements OnInit {
+
+  
   thresholdConfig = {
     '0': {color: 'green'},
     '2.5': {color: 'orange'},
@@ -57,9 +60,15 @@ export class AdditionalInfoComponent implements OnInit {
   gaugeLabel5 = "Degrees in Celcius";
   gaugeAppendText5 = "C";
 
+  gaugeType6 = "arch";
+  gaugeValue6 = 0;
+  gaugeLabel6 = "Average in Celcius";
+  gaugeAppendText6 = "C";
+
   ngOnInit(): void {
      this.getDatagrams();
      this.getTempratures();
+     this.getAverageToday();
      setInterval(() => { 
        this.getDatagrams();
        this.getTempratures();
@@ -84,6 +93,17 @@ export class AdditionalInfoComponent implements OnInit {
     this.api.getSingleTemprature().subscribe(temprature => {
       this.temprature = temprature;
       this.gaugeValue5 = Number(temprature.value);
+    })
+  }
+  
+  getAverageToday(){
+    const monthNames = ["jan", "feb", "mar", "apr", "may", "jun",
+  "jul", "aug", "sep", "oct", "nov", "dec"
+  ];
+    let dateTime = new Date();
+    let formattedDate = `${monthNames[dateTime.getMonth()]}_${dateTime.getDate()}`
+    this.api.getAverageByDate(formattedDate).subscribe(temprature =>{
+      this.gaugeValue6 = temprature;
     })
   }
 

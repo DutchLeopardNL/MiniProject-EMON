@@ -1,5 +1,6 @@
-const int lm35DataPin = A0;
 
+
+float temprature;
 void setup()
 {
   Serial.begin(9600);
@@ -7,9 +8,8 @@ void setup()
 
 void loop()
 {
-  int rawvoltage = analogRead(lm35DataPin);
-  float millivolts = (rawvoltage / 1024.0) * 5000;
-  float celsius = millivolts / 10;
-  Serial.println(celsius);
+  temprature = analogRead(0);
+  temprature=(5.0*temprature*1000.0)/(1024*10);
+  Serial.println(temprature);
   delay(5000);
 }

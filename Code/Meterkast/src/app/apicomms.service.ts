@@ -27,7 +27,13 @@ export class ApicommsService {
       return throwError(err);
     }));
   }
-
+  getAverageByDate(date:string): Observable<number>
+  {
+    return this.http.get<number>(`${this.apiUrlTemprature}/averageTemprature/${date}`).pipe(map((res:any)=> res._averageTemp)).pipe(catchError((err)=>{
+      this.throwToastrError();
+      return throwError(err);
+    }))
+  }
   getxTempratures(amount:number): Observable<Temprature[]>{
     return this.http.get<Temprature>(`${this.apiUrlTemprature}/tempratures/${amount}`).pipe(map((res:any)=> res._tempratures)).pipe(catchError((err) => {
       this.throwToastrError();
